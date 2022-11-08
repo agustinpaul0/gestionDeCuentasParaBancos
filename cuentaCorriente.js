@@ -8,22 +8,24 @@ export class CuentaCorriente
     numero;
     agencia;
     #saldo; //Usamos el # para indicar que el dato es privado y no se debe mostrar a la hora de llamar a un console.log
+    static cantidadDeCuentas = 0;
 
-    set setCliente (valor) {
+    set cliente (valor) {
         if (valor instanceof Cliente) {
             this.#cliente = valor;
         }
     }
 
-    get getCliente () {
+    get cliente () {
         return this.#cliente;
     }
 
-    constructor () {
-        this.#cliente = null;
-        this.numero = "";
-        this.agencia = "";
+    constructor (cliente, numero, agencia) {
+        this.cliente = cliente;
+        this.numero = numero
+        this.agencia = agencia;
         this.#saldo = 0;
+        CuentaCorriente.cantidadDeCuentas++;
     }
 
     depositoEnCuenta (valor) {
