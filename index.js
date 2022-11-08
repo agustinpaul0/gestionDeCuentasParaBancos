@@ -1,48 +1,53 @@
-//Definición de clases
+//Importación de clases
 
-class Cliente
-{
-    nombreCliente;
-    dniCliente;
-    rutCliente;
-}
+import {Cliente} from "./cliente.js";
+import {CuentaCorriente} from "./cuentaCorriente.js";
 
-class CuentaCorriente
-{
-    numero;
-    #saldo; //Usamos el # para indicar que el dato es privado y no se debe mostrar a la hora de llamar a un console.log
-    agencia;
+const cliente1 = new Cliente();
 
-    constructor () {
-        this.#saldo = 0;
-        this.numero = "";
-        this.agencia = "";
-    }
+cliente1.nombreCliente = "Agustin";
+cliente1.dniCliente = "65455463363663";
+cliente1.rutCliente = "53342313131";
 
-    depositoEnCuenta (valor) {
-        if (valor > 0) {
-            this.#saldo += valor;
-            return this.#saldo;
-        }
-    }
+const cuentaDeAgustin = new CuentaCorriente ();
 
-    retirarDeCuenta (valor) {
-        if (valor <= this.#saldo) {
-            this.#saldo -= valor;
-            return this.#saldo;
-        }
-    }
+cuentaDeAgustin.numero = "1";
+cuentaDeAgustin.agencia = "001";
+cuentaDeAgustin.cliente = cliente1;
 
-    verSaldo () {
-        return this.#saldo;
-    }
-}
+let saldoAgustin = cuentaDeAgustin.verSaldo();
 
-const cuentaDeAgus = new CuentaCorriente ();
+saldoAgustin = cuentaDeAgustin.depositoEnCuenta(150);
 
-let saldo = cuentaDeAgus.verSaldo();
+console.log(`El saldo actual (cuentaDeAgustin) es de ${saldoAgustin}`);
 
-console.log(`El saldo actual es de ${saldo}`);
+const cliente2 = new Cliente();
+
+cliente2.nombreCliente = "Maria";
+cliente2.dniCliente = "5859933318484";
+cliente2.rutCliente = "4844844444484844";
+
+const cuentaDeMaria = new CuentaCorriente ();
+
+cuentaDeMaria.numero = "2";
+cuentaDeMaria.agencia = "002";
+cuentaDeMaria.cliente = cliente2;
+
+cuentaDeAgustin.transferirParaCuenta(100, cuentaDeMaria);
+
+let saldoMaria = cuentaDeMaria.verSaldo();
+
+console.log(`El saldo actual (cuentaDeMaria) es de ${saldoMaria}`);
+
+saldoAgustin = cuentaDeAgustin.verSaldo();
+
+console.log(`El saldo actual (cuentaDeAgustin) es de ${saldoAgustin}`);
+
+
+
+
+
+
 
 
 
