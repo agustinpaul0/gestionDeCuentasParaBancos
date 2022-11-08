@@ -13,7 +13,7 @@ const cuentaDeAgustin = new CuentaCorriente ();
 
 cuentaDeAgustin.numero = "1";
 cuentaDeAgustin.agencia = "001";
-cuentaDeAgustin.cliente = cliente1;
+cuentaDeAgustin.setCliente = cliente1;
 
 let saldoAgustin = cuentaDeAgustin.verSaldo();
 
@@ -31,7 +31,9 @@ const cuentaDeMaria = new CuentaCorriente ();
 
 cuentaDeMaria.numero = "2";
 cuentaDeMaria.agencia = "002";
-cuentaDeMaria.cliente = cliente2;
+cuentaDeMaria.setCliente = cliente2;
+
+console.log(cuentaDeMaria.getCliente);
 
 cuentaDeAgustin.transferirParaCuenta(100, cuentaDeMaria);
 
